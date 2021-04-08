@@ -1,7 +1,7 @@
 package com.epam.esm.service;
 
 import com.epam.esm.dao.TagDao;
-import com.epam.esm.dao.impl.SQLTagDaoImpl;
+import com.epam.esm.dao.impl.TagDaoImpl;
 import com.epam.esm.model.Tag;
 import com.epam.esm.service.exception.ServiceException;
 import com.epam.esm.service.impl.TagServiceImp;
@@ -22,7 +22,7 @@ class TagServiceImpTest {
 
     @BeforeEach
     public void init() {
-        tagDao = Mockito.mock(SQLTagDaoImpl.class);
+        tagDao = Mockito.mock(TagDaoImpl.class);
         tagService = new TagServiceImp(tagDao, new TagValidatorImpl());
     }
 

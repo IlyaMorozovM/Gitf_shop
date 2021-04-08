@@ -2,8 +2,8 @@ package com.epam.esm.dao;
 
 import com.epam.esm.dao.exception.PersistenceException;
 import com.epam.esm.dao.extractor.GiftCertificateExtractor;
-import com.epam.esm.dao.impl.SQLGiftCertificateDaoImpl;
-import com.epam.esm.dao.impl.SQLTagDaoImpl;
+import com.epam.esm.dao.impl.GiftCertificateDaoImpl;
+import com.epam.esm.dao.impl.TagDaoImpl;
 import com.epam.esm.dao.mapper.GiftCertificateMapper;
 import com.epam.esm.dao.mapper.TagRowMapper;
 import com.epam.esm.model.GiftCertificate;
@@ -26,7 +26,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 
-class SQLGiftCertificateDaoImplTest {
+class GiftCertificateDaoImplTest {
 
     private GiftCertificateDAO giftCertificateDAO;
     private TagDao tagDao;
@@ -43,8 +43,8 @@ class SQLGiftCertificateDaoImplTest {
 
         JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
 
-        tagDao = new SQLTagDaoImpl(jdbcTemplate, new TagRowMapper());
-        giftCertificateDAO = new SQLGiftCertificateDaoImpl(
+        tagDao = new TagDaoImpl(jdbcTemplate, new TagRowMapper());
+        giftCertificateDAO = new GiftCertificateDaoImpl(
                 jdbcTemplate, new GiftCertificateExtractor(), new GiftCertificateMapper());
 
         tagDao.addTag(new Tag("spa"));

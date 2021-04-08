@@ -1,6 +1,7 @@
 package com.epam.esm.dao.impl;
 
 import com.epam.esm.dao.GiftCertificateDAO;
+import com.epam.esm.dao.exception.ErrorCodeEnum;
 import com.epam.esm.dao.exception.PersistenceException;
 import com.epam.esm.model.GiftCertificate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +18,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 
-public class SQLGiftCertificateDaoImpl implements GiftCertificateDAO {
+public class GiftCertificateDaoImpl implements GiftCertificateDAO {
 
     private static final String SQL_GET_CERTIFICATE_BY_ID =
             "select * from GiftCertificates " +
@@ -87,7 +88,7 @@ public class SQLGiftCertificateDaoImpl implements GiftCertificateDAO {
     private final RowMapper<GiftCertificate> mapper;
 
     @Autowired
-    public SQLGiftCertificateDaoImpl(
+    public GiftCertificateDaoImpl(
             JdbcTemplate jdbcTemplate, ResultSetExtractor<List<GiftCertificate>> extractor,
             RowMapper<GiftCertificate> mapper) {
         this.jdbcTemplate = jdbcTemplate;
@@ -161,7 +162,8 @@ public class SQLGiftCertificateDaoImpl implements GiftCertificateDAO {
         }, holder);
 
         if (holder.getKey() == null) {
-            throw new PersistenceException("Failed to add GiftCertificate to DB");
+            throw new PersistenceException("Failed to add GiftCertificate to DB",
+                    ErrorCodeEnum.FAILED_TO_ADD_CERTIFICATE);
         }
 
         return holder.getKey().intValue();

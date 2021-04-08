@@ -1,6 +1,7 @@
 package com.epam.esm.dao.impl;
 
 import com.epam.esm.dao.TagDao;
+import com.epam.esm.dao.exception.ErrorCodeEnum;
 import com.epam.esm.dao.exception.PersistenceException;
 import com.epam.esm.model.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +14,7 @@ import java.sql.Statement;
 import java.util.List;
 
 
-public class SQLTagDaoImpl implements TagDao {
+public class TagDaoImpl implements TagDao {
 
     private static final String SQL_GET_ALL_TAGS = "select Id, Name from Tags";
     private static final String SQL_GET_TAG_BY_NAME = "select Id, Name from Tags where Name = ?";
@@ -25,7 +26,7 @@ public class SQLTagDaoImpl implements TagDao {
     private final RowMapper<Tag> tagRowMapper;
 
     @Autowired
-    public SQLTagDaoImpl(JdbcTemplate jdbcTemplate, RowMapper<Tag> rowMapper) {
+    public TagDaoImpl(JdbcTemplate jdbcTemplate, RowMapper<Tag> rowMapper) {
         this.jdbcTemplate = jdbcTemplate;
         this.tagRowMapper = rowMapper;
     }
@@ -55,7 +56,7 @@ public class SQLTagDaoImpl implements TagDao {
         }, holder);
 
         if (holder.getKey() == null) {
-            throw new PersistenceException("Failed to add Tag to DB");
+            throw new PersistenceException("Failed to add Tag to DB", ErrorCodeEnum.FAILED_TO_ADD_TAG);
         }
 
         return holder.getKey().intValue();

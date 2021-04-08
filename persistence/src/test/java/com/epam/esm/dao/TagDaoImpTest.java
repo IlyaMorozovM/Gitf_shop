@@ -1,7 +1,7 @@
 package com.epam.esm.dao;
 
 import com.epam.esm.dao.exception.PersistenceException;
-import com.epam.esm.dao.impl.SQLTagDaoImpl;
+import com.epam.esm.dao.impl.TagDaoImpl;
 import com.epam.esm.dao.mapper.TagRowMapper;
 import com.epam.esm.model.Tag;
 import org.junit.jupiter.api.BeforeEach;
@@ -17,7 +17,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class SQLTagDaoImpTest {
+class TagDaoImpTest {
 
     private TagDao tagDao;
 
@@ -29,7 +29,7 @@ class SQLTagDaoImpTest {
                 .addScript("db/Tags.sql")
                 .build();
 
-        tagDao = new SQLTagDaoImpl(new JdbcTemplate(dataSource), new TagRowMapper());
+        tagDao = new TagDaoImpl(new JdbcTemplate(dataSource), new TagRowMapper());
     }
 
     @Test

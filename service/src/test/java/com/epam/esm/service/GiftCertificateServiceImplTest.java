@@ -3,8 +3,8 @@ package com.epam.esm.service;
 import com.epam.esm.dao.GiftCertificateDAO;
 import com.epam.esm.dao.TagDao;
 import com.epam.esm.dao.exception.PersistenceException;
-import com.epam.esm.dao.impl.SQLGiftCertificateDaoImpl;
-import com.epam.esm.dao.impl.SQLTagDaoImpl;
+import com.epam.esm.dao.impl.GiftCertificateDaoImpl;
+import com.epam.esm.dao.impl.TagDaoImpl;
 import com.epam.esm.model.GiftCertificate;
 import com.epam.esm.model.Tag;
 import com.epam.esm.service.exception.ServiceException;
@@ -32,8 +32,8 @@ class GiftCertificateServiceImplTest {
 
     @BeforeEach
     public void init() {
-        tagDao = Mockito.mock(SQLTagDaoImpl.class);
-        giftCertificateDAO = Mockito.mock(SQLGiftCertificateDaoImpl.class);
+        tagDao = Mockito.mock(TagDaoImpl.class);
+        giftCertificateDAO = Mockito.mock(GiftCertificateDaoImpl.class);
 
         giftCertificateService = new GiftCertificateServiceImpl(
                 giftCertificateDAO, tagDao, new CertificateValidatorImpl());

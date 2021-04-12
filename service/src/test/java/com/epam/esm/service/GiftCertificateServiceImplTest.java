@@ -102,9 +102,9 @@ class GiftCertificateServiceImplTest {
             given.add(certificate);
         }
 
-        Mockito.when(giftCertificateService.geAllCertificatesByContent()).thenReturn(given);
+        Mockito.when(giftCertificateService.geAllCertificates()).thenReturn(given);
 
-        List<GiftCertificate> actual = giftCertificateService.geAllCertificatesByContent();
+        List<GiftCertificate> actual = giftCertificateService.geAllCertificates();
         assertEquals(given, actual);
         Mockito.verify(giftCertificateDAO).getAllGiftCertificates();
     }

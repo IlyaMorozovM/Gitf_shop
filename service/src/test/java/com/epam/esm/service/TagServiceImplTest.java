@@ -4,7 +4,7 @@ import com.epam.esm.dao.TagDao;
 import com.epam.esm.dao.impl.TagDaoImpl;
 import com.epam.esm.model.Tag;
 import com.epam.esm.service.exception.ServiceException;
-import com.epam.esm.service.impl.TagServiceImp;
+import com.epam.esm.service.impl.TagServiceImpl;
 import com.epam.esm.service.util.impl.TagValidatorImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -15,7 +15,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class TagServiceImpTest {
+class TagServiceImplTest {
 
     private TagDao tagDao;
     private TagService tagService;
@@ -23,7 +23,7 @@ class TagServiceImpTest {
     @BeforeEach
     public void init() {
         tagDao = Mockito.mock(TagDaoImpl.class);
-        tagService = new TagServiceImp(tagDao, new TagValidatorImpl());
+        tagService = new TagServiceImpl(tagDao, new TagValidatorImpl());
     }
 
     @Test

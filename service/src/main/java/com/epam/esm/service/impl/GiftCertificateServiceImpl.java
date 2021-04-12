@@ -64,7 +64,7 @@ public class GiftCertificateServiceImpl implements GiftCertificateService {
     }
 
     @Override
-    public List<GiftCertificate> geAllCertificatesByContent() throws ServiceException {
+    public List<GiftCertificate> geAllCertificates() throws ServiceException {
         try {
             return giftCertificateDAO.getAllGiftCertificates();
         } catch (DataAccessException e) {
@@ -125,7 +125,7 @@ public class GiftCertificateServiceImpl implements GiftCertificateService {
     @Override
     public List<GiftCertificate> getGiftCertificates(CertificateRequestBody requestBody) throws ServiceException {
         if (requestBody == null) {
-            return geAllCertificatesByContent();
+            return geAllCertificates();
         } else {
             return getGiftCertificatesByRequestBody(requestBody);
         }
@@ -151,6 +151,7 @@ public class GiftCertificateServiceImpl implements GiftCertificateService {
         switch (sortBy) {
             case DATE : return getAllGiftCertificatesSortedByDate(isAscending(sortType));
             case NAME : return getAllGiftCertificatesSortedByName(isAscending(sortType));
+            //TODO: exception
             default: return null;
         }
     }

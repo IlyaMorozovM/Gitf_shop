@@ -18,6 +18,7 @@ public class TagValidatorImpl implements TagValidator {
 
     public void validateId(int id) throws ServiceException {
         if (id < 0) {
+            //TODO: without error code
             throw new ServiceException("Failed to validate: tag id is negative",
                     ErrorCodeEnum.TAG_VALIDATION_ERROR);
         }

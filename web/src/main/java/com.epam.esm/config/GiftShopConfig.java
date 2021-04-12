@@ -10,7 +10,7 @@ import com.epam.esm.dao.mapper.TagRowMapper;
 import com.epam.esm.model.GiftCertificate;
 import com.epam.esm.model.Tag;
 import com.epam.esm.service.impl.GiftCertificateServiceImpl;
-import com.epam.esm.service.impl.TagServiceImp;
+import com.epam.esm.service.impl.TagServiceImpl;
 import com.epam.esm.service.util.CertificateValidator;
 import com.epam.esm.service.util.TagValidator;
 import com.epam.esm.service.util.impl.CertificateValidatorImpl;
@@ -100,8 +100,8 @@ public class GiftShopConfig {
     }
 
     @Bean
-    public TagServiceImp tagServiceImp(TagDao tagDao, TagValidator tagValidator) {
-        return new TagServiceImp(tagDao, tagValidator);
+    public TagServiceImpl tagServiceImp(TagDao tagDao, TagValidator tagValidator) {
+        return new TagServiceImpl(tagDao, tagValidator);
     }
 
     @Bean

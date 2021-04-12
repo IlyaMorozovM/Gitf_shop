@@ -14,15 +14,15 @@ import org.springframework.dao.DataAccessException;
 
 import java.util.List;
 
-public class TagServiceImp implements TagService {
+public class TagServiceImpl implements TagService {
 
-    private static final Logger LOGGER = LogManager.getLogger(TagServiceImp.class);
+    private static final Logger LOGGER = LogManager.getLogger(TagServiceImpl.class);
 
     private final TagDao tagDao;
     private final TagValidator tagValidator;
 
     @Autowired
-    public TagServiceImp(TagDao tagDao, TagValidator tagValidator) {
+    public TagServiceImpl(TagDao tagDao, TagValidator tagValidator) {
         this.tagDao = tagDao;
         this.tagValidator = tagValidator;
     }

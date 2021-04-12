@@ -10,12 +10,13 @@ public interface GiftCertificateService {
 
     GiftCertificate getGiftCertificate(String name) throws ServiceException;
     GiftCertificate getGiftCertificate(int id) throws ServiceException;
-    List<GiftCertificate> geAllCertificatesByContent() throws ServiceException;
+    List<GiftCertificate> geAllCertificates() throws ServiceException;
     List<GiftCertificate> getGiftCertificatesByContent(String content) throws ServiceException;
     List<GiftCertificate> getGiftCertificateByTagName(String tagName) throws ServiceException;
     List<GiftCertificate> getAllGiftCertificatesSortedByName(boolean isAscending) throws ServiceException;
     List<GiftCertificate> getAllGiftCertificatesSortedByDate(boolean isAscending) throws ServiceException;
     List<GiftCertificate> getGiftCertificates(CertificateRequestBody requestBody) throws ServiceException;
+
     GiftCertificate addGiftCertificate(GiftCertificate giftCertificate) throws ServiceException;
     void deleteGiftCertificate(int id) throws ServiceException;
     GiftCertificate updateGiftCertificate(GiftCertificate giftCertificate, int id) throws ServiceException;

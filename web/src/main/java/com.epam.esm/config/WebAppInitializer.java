@@ -1,12 +1,14 @@
 package com.epam.esm.config;
 
+import com.epam.esm.dao.config.DAOConfig;
+import com.epam.esm.service.config.ServiceConfig;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
 
     @Override
     protected Class<?>[] getRootConfigClasses() {
-        return new Class<?>[] { GiftShopConfig.class };
+        return new Class<?>[] { ServiceConfig.class, DAOConfig.class};
     }
 
     @Override

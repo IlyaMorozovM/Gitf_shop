@@ -13,7 +13,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = {"com.epam.esm.controller"})
+@ComponentScan(basePackages = {"com.epam.esm.service.config"})
 public class WebConfig implements WebMvcConfigurer {
 
     @Bean

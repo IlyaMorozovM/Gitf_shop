@@ -31,8 +31,6 @@ import java.util.List;
 @EnableTransactionManagement
 public class DAOConfig {
 
-
-        //TODO: перенести конфиг БД на уровень persistence
         @Value("${db.driver}")
         private String driver;
 

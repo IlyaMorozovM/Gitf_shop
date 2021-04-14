@@ -16,6 +16,7 @@ import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.Instant;
@@ -23,6 +24,7 @@ import java.time.ZoneOffset;
 import java.time.ZonedDateTime;
 import java.util.List;
 
+@Service
 public class GiftCertificateServiceImpl implements GiftCertificateService {
 
     private static final Logger LOGGER = LogManager.getLogger(GiftCertificateServiceImpl.class);

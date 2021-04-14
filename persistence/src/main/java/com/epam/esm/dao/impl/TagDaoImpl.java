@@ -5,15 +5,19 @@ import com.epam.esm.dao.exception.ErrorCodeEnum;
 import com.epam.esm.dao.exception.PersistenceException;
 import com.epam.esm.model.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
+import org.springframework.stereotype.Component;
+
 import java.sql.PreparedStatement;
 import java.sql.Statement;
 import java.util.List;
 
-
+@Component
 public class TagDaoImpl implements TagDao {
 
     private static final String SQL_GET_ALL_TAGS = "select Id, Name from Tags";

@@ -2,6 +2,7 @@ package com.epam.esm.service;
 
 import com.epam.esm.model.Tag;
 import com.epam.esm.service.exception.ServiceException;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 

@@ -4,6 +4,7 @@ import com.epam.esm.dao.GiftCertificateDAO;
 import com.epam.esm.dao.TagDao;
 import com.epam.esm.dao.impl.GiftCertificateDaoImpl;
 import com.epam.esm.dao.impl.TagDaoImpl;
+import com.epam.esm.dao.TagDao;
 import com.epam.esm.dao.extractor.GiftCertificateExtractor;
 import com.epam.esm.dao.mapper.GiftCertificateMapper;
 import com.epam.esm.dao.mapper.TagRowMapper;
@@ -17,8 +18,10 @@ import com.epam.esm.service.util.impl.CertificateValidatorImpl;
 import com.epam.esm.service.util.impl.TagValidatorImpl;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -32,82 +35,83 @@ import javax.sql.DataSource;
 import java.util.List;
 
 @Configuration
-@PropertySource("classpath:db.properties")
+//@PropertySource("classpath:db.properties")
 @EnableTransactionManagement
+@ComponentScan(basePackages = {"com.epam.esm.dao.config", "com.epam.esm.service.util"})
 public class GiftShopConfig {
+//TODO: перенести конфиг БД на уровень persistence
+//    @Value("${db.driver}")
+//    private String driver;
+//
+//    @Value("${db.url}")
+//    private String url;
+//
+//    @Value("${db.username}")
+//    private String username;
+//
+//    @Value("${db.password}")
+//    private String password;
+//
+//    @Value("${db.size}")
+//    private int maxPoolSize;
+//
+//    @Bean
+//    public DataSource dataSource() {
+//        HikariConfig cfg = new HikariConfig();
+//        cfg.setDriverClassName(driver);
+//        cfg.setJdbcUrl(url);
+//        cfg.setUsername(username);
+//        cfg.setPassword(password);
+//        cfg.setMaximumPoolSize(maxPoolSize);
+//        return new HikariDataSource(cfg);
+//    }
+//
+//    @Bean
+//    public JdbcTemplate jdbcTemplate(DataSource dataSource) {
+//        return new JdbcTemplate(dataSource);
+//    }
+//
+//    @Bean
+//    public TagRowMapper tagRowMapper() {
+//        return new TagRowMapper();
+//    }
+////
+//    @Bean
+//    public GiftCertificateExtractor giftCertificateExtractor() {
+//        return new GiftCertificateExtractor();
+//    }
+//
+//    @Bean
+//    public TagDaoImpl tagDAO(JdbcTemplate jdbcTemplate, RowMapper<Tag> rowMapper) {
+//        return new TagDaoImpl(jdbcTemplate, rowMapper);
+//    }
+//
+//    @Bean
+//    public RowMapper<GiftCertificate> giftCertificateMapper() {
+//        return new GiftCertificateMapper();
+//    }
+////
+//    @Bean
+//    public GiftCertificateDaoImpl giftCertificateDao(
+//            JdbcTemplate jdbcTemplate, ResultSetExtractor<List<GiftCertificate>> giftCertificateExtractor,
+//            RowMapper<GiftCertificate> mapper) {
+//        return new GiftCertificateDaoImpl(jdbcTemplate, giftCertificateExtractor, mapper);
+//    }
 
-    @Value("${db.driver}")
-    private String driver;
-
-    @Value("${db.url}")
-    private String url;
-
-    @Value("${db.username}")
-    private String username;
-
-    @Value("${db.password}")
-    private String password;
-
-    @Value("${db.size}")
-    private int maxPoolSize;
+//    @Bean
+//    public TagValidator tagValidator() {
+//        return new TagValidatorImpl();
+//    }
 
     @Bean
-    public DataSource dataSource() {
-        HikariConfig cfg = new HikariConfig();
-        cfg.setDriverClassName(driver);
-        cfg.setJdbcUrl(url);
-        cfg.setUsername(username);
-        cfg.setPassword(password);
-        cfg.setMaximumPoolSize(maxPoolSize);
-        return new HikariDataSource(cfg);
-    }
-
-    @Bean
-    public JdbcTemplate jdbcTemplate(DataSource dataSource) {
-        return new JdbcTemplate(dataSource);
-    }
-
-    @Bean
-    public TagRowMapper tagRowMapper() {
-        return new TagRowMapper();
-    }
-
-    @Bean
-    public GiftCertificateExtractor giftCertificateExtractor() {
-        return new GiftCertificateExtractor();
-    }
-
-    @Bean
-    public TagDaoImpl tagDAO(JdbcTemplate jdbcTemplate, RowMapper<Tag> rowMapper) {
-        return new TagDaoImpl(jdbcTemplate, rowMapper);
-    }
-
-    @Bean
-    public RowMapper<GiftCertificate> giftCertificateMapper() {
-        return new GiftCertificateMapper();
-    }
-
-    @Bean
-    public GiftCertificateDaoImpl giftCertificateDao(
-            JdbcTemplate jdbcTemplate, ResultSetExtractor<List<GiftCertificate>> giftCertificateExtractor,
-            RowMapper<GiftCertificate> mapper) {
-        return new GiftCertificateDaoImpl(jdbcTemplate, giftCertificateExtractor, mapper);
-    }
-
-    @Bean
-    public TagValidator tagValidator() {
-        return new TagValidatorImpl();
-    }
-
-    @Bean
-    public TagServiceImpl tagServiceImp(TagDao tagDao, TagValidator tagValidator) {
+    public TagServiceImpl tagServiceImpl(TagDao tagDao, TagValidator tagValidator) {
         return new TagServiceImpl(tagDao, tagValidator);
     }
 
-    @Bean
-    public CertificateValidator certificateValidator() {
-        return new CertificateValidatorImpl();
-    }
+//    @Bean
+//    public CertificateValidator certificateValidator() {
+//        return new CertificateValidatorImpl();
+//    }
 
     @Bean
     public GiftCertificateServiceImpl giftCertificateService(
@@ -115,8 +119,8 @@ public class GiftShopConfig {
         return new GiftCertificateServiceImpl(giftCertificateDAO, tagDao, certificateValidator);
     }
 
-    @Bean
-    public PlatformTransactionManager transactionManager(DataSource dataSource) {
-        return new DataSourceTransactionManager(dataSource);
-    }
+//    @Bean
+//    public PlatformTransactionManager transactionManager(DataSource dataSource) {
+//        return new DataSourceTransactionManager(dataSource);
+//    }
 }

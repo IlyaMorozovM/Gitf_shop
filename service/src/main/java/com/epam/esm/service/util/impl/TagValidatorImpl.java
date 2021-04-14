@@ -4,7 +4,9 @@ import com.epam.esm.dao.exception.ErrorCodeEnum;
 import com.epam.esm.model.Tag;
 import com.epam.esm.service.exception.ServiceException;
 import com.epam.esm.service.util.TagValidator;
+import org.springframework.stereotype.Component;
 
+@Component
 public class TagValidatorImpl implements TagValidator {
 
     @Override

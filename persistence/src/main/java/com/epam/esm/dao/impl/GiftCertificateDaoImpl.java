@@ -10,6 +10,7 @@ import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
+import org.springframework.stereotype.Component;
 
 import java.sql.*;
 import java.time.ZoneOffset;
@@ -17,7 +18,7 @@ import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
-
+@Component
 public class GiftCertificateDaoImpl implements GiftCertificateDAO {
 
     private static final String SQL_GET_CERTIFICATE_BY_ID =

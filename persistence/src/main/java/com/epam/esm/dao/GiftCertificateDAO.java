@@ -4,7 +4,7 @@ import com.epam.esm.dao.exception.PersistenceException;
 import com.epam.esm.model.GiftCertificate;
 
 import java.util.List;
-
+//TODO: переименовать persistence в DAO
 public interface GiftCertificateDAO {
 
     GiftCertificate getGiftCertificate(String name);

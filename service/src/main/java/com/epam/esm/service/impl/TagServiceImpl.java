@@ -11,9 +11,12 @@ import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service("tagService")
 public class TagServiceImpl implements TagService {
 
     private static final Logger LOGGER = LogManager.getLogger(TagServiceImpl.class);

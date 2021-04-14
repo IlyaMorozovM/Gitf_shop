@@ -4,8 +4,7 @@ import java.time.ZonedDateTime;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
-
-
+//TODO: переименовать проект GiftCertificates
 public class GiftCertificate {
 
     private int id;

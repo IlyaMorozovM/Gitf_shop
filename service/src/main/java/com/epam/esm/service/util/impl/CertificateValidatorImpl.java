@@ -4,9 +4,11 @@ import com.epam.esm.dao.exception.ErrorCodeEnum;
 import com.epam.esm.model.GiftCertificate;
 import com.epam.esm.service.exception.ServiceException;
 import com.epam.esm.service.util.CertificateValidator;
+import org.springframework.stereotype.Component;
 
 import java.time.ZonedDateTime;
 
+@Component
 public class CertificateValidatorImpl implements CertificateValidator {
 
     public void validateCertificate(GiftCertificate giftCertificate) throws ServiceException {

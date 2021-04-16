@@ -209,7 +209,7 @@ public class GiftCertificateDaoImpl implements GiftCertificateDAO {
     }
 
     @Override
-    public boolean deleteAllCertificateTagRelations(int certificateId) {
-        return jdbcTemplate.update(SQL_DELETE_JOIN, certificateId) == 1;
+    public void deleteAllCertificateTagRelations(int certificateId) {
+        jdbcTemplate.update(SQL_DELETE_JOIN, certificateId);
     }
 }

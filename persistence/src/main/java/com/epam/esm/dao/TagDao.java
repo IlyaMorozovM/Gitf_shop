@@ -20,7 +20,7 @@ public interface TagDao {
      * which equals to {@param name}.
      *
      * @param name tag name.
-     * @return {@code Tag}.
+     * @return Tag.
      */
     Tag getTag(String name);
 

@@ -10,14 +10,14 @@ import java.util.List;
  * transfer GiftCertificate in and out
  * of data source.
  *
- * @author Morozov Ilya
+ * @author Ilya Morozov
  */
 public interface GiftCertificateDAO {
 
     /**
      * Retrieves data of GiftCertificate from
      * data source by name
-     * which equals to @param name.
+     * which equals to {@param name}.
      *
      * @param name certificate name.
      * @return GiftCertificate.
@@ -27,7 +27,7 @@ public interface GiftCertificateDAO {
     /**
      * Retrieves data of GiftCertificate from
      * data source by id
-     * which equals to @param id.
+     * which equals to {@param id}.
      *
      * @param id certificate id.
      * @return GiftCertificate.
@@ -117,7 +117,6 @@ public interface GiftCertificateDAO {
      * Deletes many to many relation with GiftCertificate and Tag.
      *
      * @param certificateId GiftCertificate id which to delete a many to many relation with.
-     * @return whether transaction was successful.
      */
-    boolean deleteAllCertificateTagRelations(int certificateId);
+    void deleteAllCertificateTagRelations(int certificateId);
 }

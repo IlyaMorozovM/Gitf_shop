@@ -1,7 +1,5 @@
 package com.epam.esm.dao.config;
 
-import com.epam.esm.dao.GiftCertificateDAO;
-import com.epam.esm.dao.TagDao;
 import com.epam.esm.dao.extractor.GiftCertificateExtractor;
 import com.epam.esm.dao.impl.GiftCertificateDaoImpl;
 import com.epam.esm.dao.impl.TagDaoImpl;
@@ -14,6 +12,7 @@ import com.zaxxer.hikari.HikariDataSource;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -27,8 +26,9 @@ import javax.sql.DataSource;
 import java.util.List;
 
 @Configuration
-@PropertySource("classpath:db.properties")
+@PropertySource(value = "classpath:application-${spring.profiles.active}.properties", ignoreResourceNotFound = true)
 @EnableTransactionManagement
+@Profile({"prod", "dev"})
 public class DAOConfig {
 
         @Value("${db.driver}")

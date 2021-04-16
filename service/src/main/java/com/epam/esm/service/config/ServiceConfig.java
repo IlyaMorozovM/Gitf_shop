@@ -11,9 +11,11 @@ import com.epam.esm.service.util.impl.TagValidatorImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 
 @Configuration
 @ComponentScan(basePackages = {"com.epam.esm.dao.config"})
+@Profile({"prod", "dev"})
 public class ServiceConfig {
 
     @Bean

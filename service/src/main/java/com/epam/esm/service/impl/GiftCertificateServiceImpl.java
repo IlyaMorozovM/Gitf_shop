@@ -23,6 +23,7 @@ import java.time.Instant;
 import java.time.ZoneOffset;
 import java.time.ZonedDateTime;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @Service
 public class GiftCertificateServiceImpl implements GiftCertificateService {
@@ -153,8 +154,7 @@ public class GiftCertificateServiceImpl implements GiftCertificateService {
         switch (sortBy) {
             case DATE : return getAllGiftCertificatesSortedByDate(isAscending(sortType));
             case NAME : return getAllGiftCertificatesSortedByName(isAscending(sortType));
-            //TODO: exception
-            default: return null;
+            default: throw new NoSuchElementException("Not found sort criteria");
         }
     }
 

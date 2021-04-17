@@ -111,8 +111,8 @@ class GiftCertificateDaoImplTest {
 
     private boolean equalDates(ZonedDateTime first, ZonedDateTime second) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm:ss");
-        String firstDate = ZonedDateTime.ofInstant(first.toInstant(), ZoneOffset.of("-06:00")).format(formatter);
-        String secondDate = ZonedDateTime.ofInstant(second.toInstant(), ZoneOffset.UTC).format(formatter);
+        String firstDate = ZonedDateTime.ofInstant(first.toInstant(), ZoneOffset.of("-09:00")).format(formatter);
+        String secondDate = ZonedDateTime.ofInstant(second.toInstant(), ZoneOffset.of("+09:00")).format(formatter);
 
         return firstDate.equals(secondDate);
     }
